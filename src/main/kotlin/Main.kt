@@ -1,15 +1,31 @@
-import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Observable
-
 fun main() {
 
-    Flowable.just("Hello world").subscribe(System.out::println)
+    val operators = operators()
 
-    Observable.just(2, 30, 22, 5, 60, 1)
-        .filter { x -> x > 10}
-        .subscribe {
-         println("item: $it" )
-        }
+    operators.filter()
+
+    operators.map()
+
+    val exampleFlowable = BaseClasses()
+
+    exampleFlowable.flowable()
+        .subscribe({
+            println("Flowable $it")
+        },
+            {
+                println(it)
+            }
+        )
 
 
+    val exampleSingle = BaseClasses()
+
+    exampleSingle.single()
+        .subscribe({
+            println("Single $it")
+        },
+            {
+                println(it)
+            }
+        )
 }
