@@ -1,31 +1,39 @@
 fun main() {
 
     val operators = operators()
+//    operators.filter()
+//    operators.map()
+    operators.concat()
 
-    operators.filter()
+    val baseClasses = BaseClasses()
 
-    operators.map()
-
-    val exampleFlowable = BaseClasses()
-
-    exampleFlowable.flowable()
+    baseClasses.flowable()
         .subscribe({
-            println("Flowable $it")
+            //            println("Flowable $it")
         },
             {
                 println(it)
             }
         )
 
-
-    val exampleSingle = BaseClasses()
-
-    exampleSingle.single()
-        .subscribe({
-            println("Single $it")
-        },
+    baseClasses.single()
+        .subscribe(
+            {
+                for (i in it) {
+//                    println("Single ${i.javaClass.typeName}")
+                }
+//                println("Single ${it.size}")
+            },
             {
                 println(it)
             }
         )
+
+    baseClasses.completable(listOf(2, 4, 0))
+        .subscribe({
+            println("All done")
+        },
+            {
+                //                println(it)
+            })
 }

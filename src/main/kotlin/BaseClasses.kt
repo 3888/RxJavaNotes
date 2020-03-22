@@ -1,6 +1,4 @@
-import io.reactivex.rxjava3.core.BackpressureStrategy
-import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.*
 
 class BaseClasses {
 
@@ -17,11 +15,29 @@ class BaseClasses {
     }
 
 
-    fun single(): Single<List<Int>> {
+    fun single(): Single<List<Any>> {
         return Single.create { subscriber ->
-            val list = listOf(1, 2, 3, 4, 5, 6, 7)
-            subscriber.onSuccess(list)
+            subscriber.onSuccess(listOf("String", 1, 0F, 0L))
         }
     }
 
+    fun completable(list: List<Int>): Completable {
+        return Completable.create { subscriber ->
+            for (i in list) {
+                println("2 / $i = ${2 / i}")
+            }
+            subscriber.onComplete()
+        }
+    }
+
+    fun maybe(list: List<Boolean>): Maybe<Any> {
+        return Maybe.create { subscriber ->
+
+            for (i in list) {
+                if (!i) {
+                    subscriber.onComplete()
+                }
+            }
+        }
+    }
 }
