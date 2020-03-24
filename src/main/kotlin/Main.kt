@@ -3,7 +3,9 @@ fun main() {
     val operators = operators()
 //    operators.filter()
 //    operators.map()
-    operators.concat()
+//    operators.concat()
+//    operators.distinct()
+//    operators.distinctUntilChanged()
 
     val baseClasses = BaseClasses()
 
@@ -29,11 +31,12 @@ fun main() {
             }
         )
 
-    baseClasses.completable(listOf(2, 4, 0))
-        .subscribe({
-            println("All done")
-        },
-            {
-                //                println(it)
-            })
+//    baseClasses.completable()
+//        .subscribe({
+//            println("All done")
+//        },
+//            {
+//                                println(it)
+//            })
+
 }

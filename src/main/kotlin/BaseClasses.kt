@@ -21,10 +21,10 @@ class BaseClasses {
         }
     }
 
-    fun completable(list: List<Int>): Completable {
+    fun completable(): Completable {
         return Completable.create { subscriber ->
-            for (i in list) {
-                println("2 / $i = ${2 / i}")
+            for (i in listOf(2, 4, 0)) {
+                println("4 / $i = ${4 / i}")
             }
             subscriber.onComplete()
         }
