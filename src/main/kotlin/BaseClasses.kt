@@ -14,7 +14,6 @@ class BaseClasses {
 
     }
 
-
     fun single(): Single<List<Any>> {
         return Single.create { subscriber ->
             subscriber.onSuccess(listOf("String", 1, 0F, 0L))
@@ -30,12 +29,13 @@ class BaseClasses {
         }
     }
 
-    fun maybe(list: List<Boolean>): Maybe<Any> {
+    fun maybe(list: List<Boolean>): Maybe<List<Boolean>> {
         return Maybe.create { subscriber ->
-
             for (i in list) {
-                if (!i) {
+                if (i) {
                     subscriber.onComplete()
+                }else{
+                    subscriber.onSuccess(list)
                 }
             }
         }

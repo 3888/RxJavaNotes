@@ -21,13 +21,14 @@ fun main() {
     baseClasses.single()
         .subscribe(
             {
-                for (i in it) {
+                //                for (i in it) {
 //                    println("Single ${i.javaClass.typeName}")
-                }
+//                }
 //                println("Single ${it.size}")
+//                throw Exception("Hi There!")
             },
             {
-                println(it)
+                //                println(it)
             }
         )
 
@@ -36,7 +37,17 @@ fun main() {
 //            println("All done")
 //        },
 //            {
-//                                println(it)
+//                println(it)
 //            })
+
+    baseClasses.maybe(listOf(false, true))
+        .subscribe({
+            println("maybe $it onSuccess")
+        }, {
+            println(it)
+        },
+            {
+                println("maybe OnComplete")
+            })
 
 }
