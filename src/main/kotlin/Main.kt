@@ -40,14 +40,15 @@ fun main() {
 //                println(it)
 //            })
 
-    baseClasses.maybe(listOf(false, true))
-        .subscribe({
-            println("maybe $it onSuccess")
-        }, {
-            println(it)
-        },
-            {
-                println("maybe OnComplete")
-            })
+//    baseClasses.maybe(listOf(false, true))
+//        .subscribe({
+//            println("maybe $it onSuccess")
+//        }, {
+//            println(it)
+//        },
+//            {
+//                println("maybe OnComplete")
+//            })
 
+  baseClasses.disposableInterval(1000,  5000)
 }

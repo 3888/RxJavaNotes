@@ -1,4 +1,5 @@
 import io.reactivex.rxjava3.core.*
+import java.util.concurrent.TimeUnit
 
 class BaseClasses {
 
@@ -34,10 +35,25 @@ class BaseClasses {
             for (i in list) {
                 if (i) {
                     subscriber.onComplete()
-                }else{
+                } else {
                     subscriber.onSuccess(list)
                 }
             }
+        }
+    }
+
+    fun disposableInterval(intervalPeriodMillis: Long, sleepDelayMillis: Long) {
+        val seconds = Observable.interval(intervalPeriodMillis, TimeUnit.MILLISECONDS)
+        val disposable = seconds
+            .subscribe { l -> println("Received: " + l!!) }
+
+        //sleep 5 seconds
+        Thread.sleep(sleepDelayMillis)
+
+        disposable.dispose()
+
+        if (disposable.isDisposed) {
+            println("Disposable is disposed!")
         }
     }
 }
