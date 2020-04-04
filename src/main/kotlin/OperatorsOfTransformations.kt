@@ -1,6 +1,7 @@
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.Observable
+import io.reactivex.rxkotlin.Observables
 
-class operators {
+class OperatorsOfTransformations {
     /*
     https://medium.com/@jshvarts/read-marble-diagrams-like-a-pro-3d72934d3ef5
      */
@@ -30,6 +31,10 @@ class operators {
             .subscribe{
                 println("concat item: $it")
             }
+
+    }
+
+    fun zip(){
 
     }
 

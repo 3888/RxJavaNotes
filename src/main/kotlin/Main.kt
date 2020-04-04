@@ -1,6 +1,6 @@
 fun main() {
 
-    val operators = operators()
+    val operators = OperatorsOfTransformations()
 //    operators.filter()
 //    operators.map()
 //    operators.concat()
@@ -9,28 +9,28 @@ fun main() {
 
     val baseClasses = BaseClasses()
 
-    baseClasses.flowable()
-        .subscribe({
-            //            println("Flowable $it")
-        },
-            {
-                println(it)
-            }
-        )
+//    baseClasses.flowable()
+//        .subscribe({
+//                        println("Flowable $it")
+//        },
+//            {
+//                println(it)
+//            }
+//        )
 
-    baseClasses.single()
-        .subscribe(
-            {
+//    baseClasses.single()
+//        .subscribe(
+//            {
                 //                for (i in it) {
 //                    println("Single ${i.javaClass.typeName}")
 //                }
 //                println("Single ${it.size}")
 //                throw Exception("Hi There!")
-            },
-            {
-                //                println(it)
-            }
-        )
+//            },
+//            {
+//                                println(it)
+//            }
+//        )
 
 //    baseClasses.completable()
 //        .subscribe({
@@ -50,5 +50,11 @@ fun main() {
 //                println("maybe OnComplete")
 //            })
 
-  baseClasses.disposableInterval(1000,  5000)
+//  baseClasses.disposableInterval(1000,  5000)
+
+    val rxKotlin = RxKotlin()
+
+//    rxKotlin.toObservable()
+    rxKotlin.observablesZipped()
+
 }

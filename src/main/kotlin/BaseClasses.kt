@@ -1,4 +1,4 @@
-import io.reactivex.rxjava3.core.*
+import io.reactivex.*
 import java.util.concurrent.TimeUnit
 
 class BaseClasses {
@@ -45,7 +45,9 @@ class BaseClasses {
     fun disposableInterval(intervalPeriodMillis: Long, sleepDelayMillis: Long) {
         val seconds = Observable.interval(intervalPeriodMillis, TimeUnit.MILLISECONDS)
         val disposable = seconds
-            .subscribe { l -> println("Received: " + l!!) }
+            .subscribe {
+                println("Received: $it")
+            }
 
         //sleep 5 seconds
         Thread.sleep(sleepDelayMillis)
@@ -55,5 +57,12 @@ class BaseClasses {
         if (disposable.isDisposed) {
             println("Disposable is disposed!")
         }
+    }
+
+    /*
+    Порядок, в котором объединяются наблюдаемые, не гарантируется таким же, как в исходном Observable
+    */
+    fun flatMap() {
+
     }
 }
