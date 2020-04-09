@@ -1,12 +1,24 @@
 fun main() {
 
+    operators()
+//    baseClasses()
+//    rxKotlin()
+
+}
+
+fun operators() {
     val operators = OperatorsOfTransformations()
 //    operators.filter()
 //    operators.map()
 //    operators.concat()
 //    operators.distinct()
 //    operators.distinctUntilChanged()
+    operators.zipBiFunction("Bingo", 20)
+    operators.combineLatestBiFunction("Bingo", 20)
 
+}
+
+fun baseClasses() {
     val baseClasses = BaseClasses()
 
 //    baseClasses.flowable()
@@ -21,7 +33,7 @@ fun main() {
 //    baseClasses.single()
 //        .subscribe(
 //            {
-                //                for (i in it) {
+    //                for (i in it) {
 //                    println("Single ${i.javaClass.typeName}")
 //                }
 //                println("Single ${it.size}")
@@ -51,10 +63,11 @@ fun main() {
 //            })
 
 //  baseClasses.disposableInterval(1000,  5000)
+}
 
+fun rxKotlin() {
     val rxKotlin = RxKotlin()
 
 //    rxKotlin.toObservable()
-    rxKotlin.observablesZipped()
-
+//    rxKotlin.observablesZipped()
 }
