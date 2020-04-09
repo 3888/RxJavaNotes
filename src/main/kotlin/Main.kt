@@ -1,3 +1,5 @@
+import kotlin.random.Random
+
 fun main() {
 
     operators()
@@ -13,8 +15,11 @@ fun operators() {
 //    operators.concat()
 //    operators.distinct()
 //    operators.distinctUntilChanged()
-    operators.zipBiFunction("Bingo", 20)
-    operators.combineLatestBiFunction("Bingo", 20)
+//    operators.zipBiFunction("Bingo", 20)
+//    operators.combineLatestBiFunction("Bingo", 20)
+
+    operators.flatMapSingle(Random.nextInt(0, 10)).subscribe()
+
 
 }
 

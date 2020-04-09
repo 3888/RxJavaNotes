@@ -21,6 +21,8 @@ class BaseClasses {
         }
     }
 
+
+
     fun completable(): Completable {
         return Completable.create { subscriber ->
             for (i in listOf(2, 4, 0)) {
@@ -59,10 +61,6 @@ class BaseClasses {
         }
     }
 
-    /*
-    Порядок, в котором объединяются наблюдаемые, не гарантируется таким же, как в исходном Observable
-    */
-    fun flatMap() {
 
-    }
+
 }
