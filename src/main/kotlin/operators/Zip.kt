@@ -6,6 +6,7 @@ import io.reactivex.subjects.PublishSubject
 
 fun main() {
 
+    zipBiFunction("Tony", 100)
 }
 
 
@@ -16,7 +17,7 @@ private fun zipBiFunction(name: String, age: Int) {
     Observable.zip<String, Int, String>(
         nameSubject, ageSubject, BiFunction { n, a -> "name is $n - age is $a" })
         .subscribe {
-            println("onNext - $it")
+            println(it)
         }
 
     nameSubject.onNext(name)

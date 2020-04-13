@@ -1,11 +1,29 @@
 package operators
 
 import io.reactivex.Observable
+import io.reactivex.Single
+import kotlin.random.Random
 
 fun main() {
 
     map()
-//    mapError()
+    mapInRange()
+    mapError()
+
+    mapSingleBoolean()
+        .subscribe(
+            {
+                if (it) {
+                    println("The value is lower")
+                } else {
+                    println("The value is higher")
+                }
+            },
+            {
+                println(it)
+            }
+        )
+
 }
 
 private fun map() {
@@ -14,6 +32,31 @@ private fun map() {
         .subscribe {
             println("map item: $it")
         }
+}
+
+private fun mapInRange() {
+
+    Observable.just(
+        Random.nextInt(10, 70),
+        Random.nextInt(10, 70),
+        Random.nextInt(10, 70),
+        Random.nextInt(10, 70)
+    )
+        .map {
+            println("Temperature is $it degrees Celsius")
+            when (it) {
+                in 41..70 -> {
+                    println("It's too hot")
+                }
+                in 20..40 -> {
+                    println("All fine")
+                }
+                in 10..19 -> {
+                    println("It's cold")
+                }
+            }
+        }
+        .subscribe()
 }
 
 private fun mapError() {
@@ -30,3 +73,22 @@ private fun mapError() {
             println(it)
         })
 }
+
+private fun mapSingleBoolean(): Single<Boolean> {
+    val until = 10
+    val value = 5
+
+    return Single.create<Int> {
+        it.onSuccess(
+            Random.nextInt(until)
+        )
+    }
+        .map {
+            println("$it < $value ${it < value}")
+            it < value
+        }
+}
+
+
+
+

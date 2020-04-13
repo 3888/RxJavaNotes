@@ -4,7 +4,7 @@ import io.reactivex.Single
 
 fun main() {
 
-    single()
+    singleWithErrorHandling()
         .subscribe(
             {
                 for (i in it) {
@@ -18,10 +18,9 @@ fun main() {
             }
         )
 
-
 }
 
-private fun single(): Single<List<Any>> {
+private fun singleWithErrorHandling(): Single<List<Any>> {
     return Single.create { subscriber ->
         subscriber.onSuccess(listOf("String", 1, 0F, 0L))
     }
