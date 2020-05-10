@@ -1,4 +1,4 @@
-package operators
+package operators.filtering
 
 import io.reactivex.Observable
 

@@ -1,9 +1,9 @@
-package operators
+package operators.combining
 
 import io.reactivex.Observable
 
 fun main() {
-
+    concat()
 }
 
 private fun concat() {

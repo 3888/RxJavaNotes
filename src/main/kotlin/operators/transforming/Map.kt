@@ -1,4 +1,4 @@
-package operators
+package operators.transforming
 
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -6,9 +6,9 @@ import kotlin.random.Random
 
 fun main() {
 
-    map()
-    mapInRange()
-    mapError()
+//    map()
+//    mapInRange()
+//    mapError()
 
     mapSingleBoolean()
         .subscribe(
@@ -35,7 +35,6 @@ private fun map() {
 }
 
 private fun mapInRange() {
-
     Observable.just(
         Random.nextInt(10, 70),
         Random.nextInt(10, 70),

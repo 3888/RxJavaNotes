@@ -1,4 +1,4 @@
-package operators
+package operators.combining
 
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject

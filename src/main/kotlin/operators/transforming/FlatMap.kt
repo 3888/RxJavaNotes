@@ -1,10 +1,9 @@
-package operators
+package operators.transforming
 
 import io.reactivex.Single
 import kotlin.random.Random
 
 fun main() {
-
 
     flatMapSingle(Random.nextInt(10)).subscribe()
 
@@ -13,9 +12,9 @@ fun main() {
 private fun flatMap() {
 /*
 Порядок, в котором объединяются наблюдаемые, не гарантируется таким же, как в исходном Observable
+https://stackoverflow.com/questions/53682216/rxjava-schedulers-io-doesnt-work-in-maven-project
  */
 }
-
 
 private fun flatMapSingle(value: Int): Single<Boolean> =
     Single.just(value)
