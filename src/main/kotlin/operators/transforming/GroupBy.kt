@@ -7,7 +7,6 @@ import io.reactivex.observables.GroupedObservable
 
 fun main() {
     groupByBoolean()
-
 }
 
 private fun groupByBoolean() {
