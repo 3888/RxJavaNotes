@@ -12,7 +12,7 @@ https://overcoder.net/q/2085/%D0%B2-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%
 */
 fun main() {
 //    flatMap()
-    convertStringToUpperCaseStreams()
+    map()
 
 }
 
@@ -30,7 +30,7 @@ private fun flatMap() {
 }
 
 
-fun convertStringToUpperCaseStreams() {
+private fun map() {
     val collected =
         Stream.of("a", "b", "hello") // Stream of String
             .map { obj: String -> obj.toUpperCase() } // Returns a stream consisting of the results of applying the given function to the elements of this stream.
