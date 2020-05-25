@@ -1,4 +1,4 @@
-package operators.combining
+package operators.MathematicalAndAggregate
 
 import io.reactivex.Observable
 

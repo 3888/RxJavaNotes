@@ -1,4 +1,4 @@
-package operators.transforming
+package operators.TransformingObservables
 
 import java.util.*
 import java.util.stream.Collectors

@@ -1,4 +1,4 @@
-package operators.filtering
+package operators.FilteringObservables
 
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction

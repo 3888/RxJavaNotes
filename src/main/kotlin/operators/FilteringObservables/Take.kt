@@ -1,14 +1,15 @@
-package operators.filtering
+package operators.FilteringObservables
 
 import io.reactivex.Observable
 
 fun main() {
-    takeLast()
+    take()
 }
 
-private fun takeLast() {
+private fun take() {
+
     Observable.just(1, 2, 3, 4, 5, 6)
-        .takeLast(3)
+        .take(3)
         .subscribe {
             println("sample item: $it")
         }

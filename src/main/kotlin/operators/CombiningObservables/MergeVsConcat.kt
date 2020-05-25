@@ -1,4 +1,4 @@
-package operators.combining
+package operators.CombiningObservables
 
 import io.reactivex.Observable
 import java.util.concurrent.TimeUnit
@@ -34,7 +34,6 @@ private fun concat() {
     Thread.sleep(3000)
 }
 
-
 private fun merge() {
     val alphabets1 = Observable
         .interval(500, TimeUnit.MILLISECONDS)
@@ -53,3 +52,5 @@ private fun merge() {
 
     Thread.sleep(3000)
 }
+
+//TODO https://blog.mindorks.com/rxjava-operator-concat-vs-merge ??? not working

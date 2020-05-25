@@ -1,4 +1,4 @@
-package operators.transforming
+package operators.TransformingObservables
 
 import io.reactivex.Observable
 import io.reactivex.Single

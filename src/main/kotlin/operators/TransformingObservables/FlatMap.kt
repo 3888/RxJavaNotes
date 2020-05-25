@@ -1,4 +1,4 @@
-package operators.transforming
+package operators.TransformingObservables
 
 import io.reactivex.Single
 import kotlin.random.Random
