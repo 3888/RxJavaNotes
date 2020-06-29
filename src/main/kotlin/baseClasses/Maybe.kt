@@ -5,15 +5,17 @@ import io.reactivex.Maybe
 
 fun main() {
 
-    maybe(listOf(false, true))
-        .subscribe({
-            println("maybe $it onSuccess")
-        }, {
-            println(it)
-        },
-            {
-                println("maybe OnComplete")
-            })
+//    maybe(listOf(false, true))
+//        .subscribe({
+//            println("maybe $it onSuccess")
+//        }, {
+//            println(it)
+//        },
+//            {
+//                println("maybe OnComplete")
+//            })
+
+    getPath()
 
 }
 
@@ -29,4 +31,25 @@ private fun maybe(list: List<Boolean>): Maybe<List<Boolean>> {
         }
     }
 }
+
+private fun getPath() =
+    Maybe.fromCallable {
+        null
+    }
+//        .flatMapCompletable {
+//            println(it)
+//            Completable.complete()
+//        }
+        .subscribe(
+            {
+                    println("onSuccess")
+            },
+            {
+                println("onError")
+            },
+            {
+                println("onComplete")
+            }
+        )
+
 

@@ -1,9 +1,21 @@
 package baseClasses
 
 import io.reactivex.Completable
+import io.reactivex.Maybe
 
 fun main() {
 
+    deleteFile()
+        .subscribe({
+            println("All done")
+        },
+            {
+                println(it)
+            })
+
+}
+
+private fun curlyAndRoundBracketsForAndThen() {
     doOnComplete()
 //        .andThen(doOnError())
 //        .andThen { doOnError() }
@@ -57,3 +69,19 @@ private fun doOnComplete(): Completable {
             subscriber.onComplete()
         }
 }
+
+private fun deleteFile(): Completable {
+    val path: String? = null
+
+    return Maybe.fromCallable {
+        path
+    }
+        .flatMapCompletable {
+            if (it.isEmpty()) println("isEmpty")
+            if (it.isBlank()) println("isBlank")
+
+            Completable.complete()
+        }
+}
+
+
