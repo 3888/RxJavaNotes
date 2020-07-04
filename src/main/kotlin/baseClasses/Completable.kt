@@ -1,13 +1,20 @@
 package baseClasses
 
 import io.reactivex.Completable
-import io.reactivex.Maybe
 
 fun main() {
 
-    deleteFile()
+//    andThenBranch()
+//        .subscribe({
+//            println("All done")
+//        },
+//            {
+//                println(it)
+//            })
+
+    checkFilePathAndDelete(null)
         .subscribe({
-            println("All done")
+            println("File deleted")
         },
             {
                 println(it)
@@ -50,6 +57,12 @@ private fun curlyAndRoundBracketsForAndThen() {
 
 }
 
+private fun andThenBranch(): Completable {
+    return completable(3000, 1)
+        .andThen(completable(2000, 2))
+        .andThen(completable(1000, 3))
+}
+
 private fun doOnError(): Completable {
     return Completable
         .create { subscriber ->
@@ -70,18 +83,22 @@ private fun doOnComplete(): Completable {
         }
 }
 
-private fun deleteFile(): Completable {
-    val path: String? = null
-
-    return Maybe.fromCallable {
-        path
+fun checkFilePathAndDelete(path: String?): Completable {
+    return when {
+        path == null -> Completable.error(Throwable("path is null"))
+        path.isEmpty() -> Completable.error(Throwable("path is Empty"))
+        path.isBlank() -> Completable.error(Throwable("path is Blank"))
+        else -> Completable.complete()
     }
-        .flatMapCompletable {
-            if (it.isEmpty()) println("isEmpty")
-            if (it.isBlank()) println("isBlank")
+}
 
-            Completable.complete()
+private fun completable(millis: Long, number: Int): Completable {
+    return Completable
+        .fromCallable {
+            Thread.sleep(millis)
+            println("Message number $number after $millis sleep")
         }
+
 }
 
 

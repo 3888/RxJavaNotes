@@ -15,10 +15,9 @@ fun main() {
 //                println("maybe OnComplete")
 //            })
 
-    getPath()
+    maybeForNullValue(null)
 
 }
-
 
 private fun maybe(list: List<Boolean>): Maybe<List<Boolean>> {
     return Maybe.create { subscriber ->
@@ -32,20 +31,16 @@ private fun maybe(list: List<Boolean>): Maybe<List<Boolean>> {
     }
 }
 
-private fun getPath() =
+private fun maybeForNullValue(string: String?) =
     Maybe.fromCallable {
-        null
+        string
     }
-//        .flatMapCompletable {
-//            println(it)
-//            Completable.complete()
-//        }
         .subscribe(
             {
-                    println("onSuccess")
+                println("onSuccess result is $it")
             },
             {
-                println("onError")
+                println("onError $it")
             },
             {
                 println("onComplete")
