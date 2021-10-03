@@ -3,12 +3,13 @@ package operators.TransformingObservables
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import operators.performLongOperation
 import kotlin.random.Random
 
 
 fun main() {
 
-//    flatMap() // not working with wrong order(
+    flatMap() // not working with wrong order(
 //    flatMapSingle(Random.nextInt(10)).subscribe()
 
 }
@@ -33,15 +34,7 @@ https://stackoverflow.com/questions/53682216/rxjava-schedulers-io-doesnt-work-in
             )
         }
 
-    Thread.sleep(10000)
-}
-
-fun performLongOperation(value: String): Observable<String> {
-    val millis = Random.nextInt(1, 10) * 100L
-    println("sleep for $millis")
-
-    Thread.sleep(millis)
-    return Observable.just(value)
+    Thread.sleep(3000)
 }
 
 

@@ -12,23 +12,25 @@ fun main() {
 //                println(it)
 //            })
 
-    checkFilePathAndDelete(null)
-        .subscribe({
-            println("File deleted")
-        },
-            {
-                println(it)
-            })
+//    checkFilePathAndDelete(null)
+//        .subscribe({
+//            println("File deleted")
+//        },
+//            {
+//                println(it)
+//            })
+
+    curlyAndRoundBracketsForAndThen()
 
 }
 
 private fun curlyAndRoundBracketsForAndThen() {
-    doOnComplete()
-//        .andThen(doOnError())
-//        .andThen { doOnError() }
-        .andThen(doOnComplete())
+    dividing()
+        .andThen(dividingWithError())
+//        .andThen { dividingWithError() }
+//        .andThen(dividing())
 //        .andThen {
-//            doOnComplete()
+//            dividing()
 //            .subscribe({
 //                println("All done now HERE!")
 //            },
@@ -63,17 +65,17 @@ private fun andThenBranch(): Completable {
         .andThen(completable(1000, 3))
 }
 
-private fun doOnError(): Completable {
+private fun dividingWithError(): Completable {
     return Completable
         .create { subscriber ->
-            for (i in listOf(2, 4, 0)) {
+            for (i in listOf(0)) {
                 println("4 / $i = ${4 / i}")
             }
             subscriber.onComplete()
         }
 }
 
-private fun doOnComplete(): Completable {
+private fun dividing(): Completable {
     return Completable
         .create { subscriber ->
             for (i in listOf(2, 4, 1)) {
