@@ -10,22 +10,17 @@ concatMap()
 }
 
 private fun concatMap() {
-
-    Observable.just("First", "Second", "Third", "Four", "Fifth")
+    Observable.just("A", "B", "C", "D")
         .concatMap { v ->
-            performLongOperation(v)
+            Observable.just("1", "2", "3")
                 .doOnNext {
-                    println("processing item on thread " + Thread.currentThread().name)
+                    print("$v$it ")
                 }
                 .subscribeOn(Schedulers.io())
         }
-        .subscribe {
-            println(
-                "$it on thread ${Thread.currentThread().name}"
-            )
-        }
+        .subscribe()
 
-    Thread.sleep(10000)
+    Thread.sleep(500)
 }
 
 

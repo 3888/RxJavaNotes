@@ -9,22 +9,38 @@ import kotlin.random.Random
 
 fun main() {
 
-    flatMap() // not working with wrong order(
-//    flatMapSingle(Random.nextInt(10)).subscribe()
+//    flatMap()
+    flatMap2()
+
+//    flatMapSingle(6).subscribe()
 
 }
 
 private fun flatMap() {
-/*
+    /*
 Порядок, в котором объединяются наблюдаемые, не гарантируется таким же, как в исходном Observable
 https://stackoverflow.com/questions/53682216/rxjava-schedulers-io-doesnt-work-in-maven-project
  */
 
-    Observable.just("First", "Second", "Third", "Four", "Fifth")
+    Observable.just("A", "B", "C", "D")
         .flatMap { v ->
-            performLongOperation(v)
+            Observable.just("1", "2", "3")
                 .doOnNext {
-                    println("processing item on thread " + Thread.currentThread().name)
+                    print("$v$it ")
+                }
+                .subscribeOn(Schedulers.io())
+        }
+        .subscribe()
+
+    Thread.sleep(500)
+}
+
+private fun flatMap2() {
+    Observable.just("First", "Second", "Third", "Four", "Fifth")
+        .flatMap {
+            performLongOperation(it)
+                .doOnNext {
+                    println("$it processing item on thread " + Thread.currentThread().name)
                 }
                 .subscribeOn(Schedulers.newThread())
         }
@@ -35,6 +51,7 @@ https://stackoverflow.com/questions/53682216/rxjava-schedulers-io-doesnt-work-in
         }
 
     Thread.sleep(3000)
+
 }
 
 

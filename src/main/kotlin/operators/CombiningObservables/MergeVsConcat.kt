@@ -5,7 +5,8 @@ import java.util.concurrent.TimeUnit
 
 
 fun main() {
-//concat()
+//    concat()
+//    println()
     merge()
 
 }
@@ -16,31 +17,31 @@ fun main() {
  * The difference between merge() and concat() is that merge() interweaves output
  * while concat() waits for earlier emissions to complete before processing new emissions.*/
 private fun concat() {
-    val alphabets1 = Observable
-        .interval(500, TimeUnit.MILLISECONDS)
-        .map { id: Long -> "concatA$id" }
+    val alphabets1 = Observable.just("A","B","C")
+//        .interval(200, TimeUnit.MILLISECONDS)
+//        .map { id: Long -> "concatA$id" }
 
-    val alphabets2 = Observable
-        .interval(500, TimeUnit.MILLISECONDS)
-        .map { id: Long -> "concatB$id" }
+    val alphabets2 = Observable.just("D","E","F")
+//        .interval(100, TimeUnit.MILLISECONDS)
+//        .map { id: Long -> "concatB$id" }
 
-    Observable.concat(alphabets1, alphabets2)
+    Observable.concat(alphabets2,alphabets1)
         .subscribe({
-            println(it)
+            print(it)
         }, {
 
         })
 
-    Thread.sleep(3000)
+    Thread.sleep(1000)
 }
 
 private fun merge() {
     val alphabets1 = Observable
-        .interval(500, TimeUnit.MILLISECONDS)
+        .interval(100, TimeUnit.MILLISECONDS)
         .map { id: Long -> "mergeA$id" }
 
     val alphabets2 = Observable
-        .interval(500, TimeUnit.MILLISECONDS)
+        .interval(100, TimeUnit.MILLISECONDS)
         .map { id: Long -> "mergeB$id" }
 
     Observable.merge(alphabets1, alphabets2)
@@ -50,7 +51,7 @@ private fun merge() {
 
         })
 
-    Thread.sleep(3000)
+    Thread.sleep(1000)
 }
 
 //TODO https://blog.mindorks.com/rxjava-operator-concat-vs-merge ??? not working
